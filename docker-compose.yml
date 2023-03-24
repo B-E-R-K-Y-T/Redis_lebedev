@@ -1,16 +1,5 @@
 version: '3.8'
 services:
-  postgres:
-    image: postgres:11-alpine
-    ports:
-      - "${POSTGRES_PUBLIC_PORT:-5432}:5432"
-    environment:
-      - POSTGRES_USER=server
-      - POSTGRES_PASSWORD=server
-      - POSTGRES_DB=server
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-
   redis:
     image: docker.io/bitnami/redis:6.0-debian-10
     environment:

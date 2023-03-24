@@ -1,3 +1,9 @@
 spring:
   banner:
     location: classpath:/banner.txt
+  redis:
+    database: 0
+    host: dockertoolbox
+    port: 46379
+    password: ""
+    timeout: 60000
