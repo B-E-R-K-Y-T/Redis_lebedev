@@ -55,6 +55,18 @@ elif [[ "$1 $2" == "docker run" ]]; then
         -f docker-compose.service.yml \
         logs -f shop-with-redis \
     || exit 1
+elif [[ "$1 $2" == "docker restart" ]]; then
+    docker-compose \
+        -f docker-compose.redis.yml \
+        -f docker-compose.service.yml \
+        restart $3 \
+    || exit 1
+elif [[ "$1 $2" == "docker delete" ]]; then
+    docker-compose \
+        -f docker-compose.redis.yml \
+        -f docker-compose.service.yml \
+        down -v \
+    || exit 1
 else
     printf "%s" "Usage: shop-with-postgres"
     printf "\n"
