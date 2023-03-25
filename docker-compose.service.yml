@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  shop-with-redis:
+    image: registry.gitlab.com/reconquista-lebed/shop-with-redis:master
+    environment:
+      SPRING_REDIS_PASSWORD: "shop-with-redis"
+      SPRING_REDIS_CLUSTER_NODES: "redis-node-0:6379,redis-node-1:6379,redis-node-2:6379,redis-node-3:6379,redis-node-4:6379,redis-node-5:6379"
+    ports:
+      - "8080:8080"

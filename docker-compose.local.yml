@@ -10,5 +10,4 @@ services:
       - redis_data:/bitnami
 
 volumes:
-  postgres-data:
   redis_data:

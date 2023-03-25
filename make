@@ -45,9 +45,15 @@ elif [[ "$1 $2" == "docker build" ]]; then
 elif [[ "$1 $2" == "docker push" ]]; then
     docker push "registry.gitlab.com/reconquista-lebed/shop-with-redis:${CI_DOCKER_TAG}" || exit 1
 elif [[ "$1 $2" == "docker run" ]]; then
-    docker run --rm \
-        -p 8080:8080 \
-        "registry.gitlab.com/reconquista-lebed/shop-with-redis:${CI_DOCKER_TAG}" \
+    docker-compose \
+        -f docker-compose.redis.yml \
+        -f docker-compose.service.yml \
+        up -d \
+    || exit 1
+    docker-compose \
+        -f docker-compose.redis.yml \
+        -f docker-compose.service.yml \
+        logs -f shop-with-redis \
     || exit 1
 else
     printf "%s" "Usage: shop-with-postgres"
