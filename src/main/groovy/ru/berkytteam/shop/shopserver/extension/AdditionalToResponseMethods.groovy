@@ -3,7 +3,7 @@ package ru.berkytteam.shop.shopserver.extension
 import io.tswf.groovy.bettergroovy.transforms.extensions.ExtensionMethodsContainer
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import ru.berkytteam.shop.shopserver.model.dto.HtpErrorDto
+import ru.berkytteam.shop.shopserver.model.dto.HttpErrorDto
 
 @ExtensionMethodsContainer
 class AdditionalToResponseMethods {
@@ -18,7 +18,7 @@ class AdditionalToResponseMethods {
         }
 
         if (self == null) {
-            def responseDto = new HtpErrorDto(
+            def responseDto = new HttpErrorDto(
                 status: HttpStatus.NOT_FOUND,
                 message: "No data found for the request :c"
             )
