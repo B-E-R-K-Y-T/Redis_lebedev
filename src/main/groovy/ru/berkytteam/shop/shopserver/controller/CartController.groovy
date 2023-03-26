@@ -1,6 +1,7 @@
 package ru.berkytteam.shop.shopserver.controller
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import ru.berkytteam.shop.shopserver.model.dto.CartCreateDto
 import ru.berkytteam.shop.shopserver.model.dto.CartDto
@@ -15,22 +16,22 @@ class CartController {
     CartService cartService
 
     @GetMapping(path = "/{cartId}")
-    Optional<CartDto> getCartById(@PathVariable UUID cartId) {
-        return cartService.getById(cartId)
+    ResponseEntity<CartDto> getCartById(@PathVariable UUID cartId) {
+        return cartService.getById(cartId).toResponse()
     }
 
     @PostMapping
-    CartDto createCart(@RequestBody CartCreateDto createDto) {
-        return cartService.create(createDto)
+    ResponseEntity<CartDto> createCart(@RequestBody CartCreateDto createDto) {
+        return cartService.create(createDto).toResponse()
     }
 
     @PutMapping(path = "/{cartId}")
-    Optional<CartDto> updateCartById(@PathVariable UUID cartId, @RequestBody CartUpdateDto updateDto) {
-        return cartService.updateById(cartId, updateDto)
+    ResponseEntity<CartDto> updateCartById(@PathVariable UUID cartId, @RequestBody CartUpdateDto updateDto) {
+        return cartService.updateById(cartId, updateDto).toResponse()
     }
 
     @DeleteMapping(path = "/{cartId}")
-    Optional<CartDto> deleteCartById(@PathVariable UUID cartId) {
-        return cartService.deleteById(cartId)
+    ResponseEntity<CartDto> deleteCartById(@PathVariable UUID cartId) {
+        return cartService.deleteById(cartId).toResponse()
     }
 }

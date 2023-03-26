@@ -1,0 +1,5 @@
+moduleName=shop-server-module
+moduleVersion=1.0.0
+extensionClasses=ru.berkytteam.shop.shopserver.extension.AdditionalToResponseMethods
+
+#staticExtensionClasses=

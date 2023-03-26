@@ -1,13 +1,12 @@
 package ru.berkytteam.shop.shopserver.controller
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import ru.berkytteam.shop.shopserver.model.dto.ProductCreateDto
 import ru.berkytteam.shop.shopserver.model.dto.ProductDto
 import ru.berkytteam.shop.shopserver.model.dto.ProductUpdateDto
 import ru.berkytteam.shop.shopserver.service.ProductService
-
-import static ru.berkytteam.shop.shopserver.controller.ApiConstants.API_V1
 
 @RequestMapping(path = "/api/v1/product")
 @RestController
@@ -17,22 +16,22 @@ class ProductController {
     ProductService productService
 
     @GetMapping(path = "/{productId}")
-    Optional<ProductDto> getProductById(@PathVariable UUID productId) {
-        return productService.getById(productId)
+    ResponseEntity<ProductDto> getProductById(@PathVariable UUID productId) {
+        return productService.getById(productId).toResponse()
     }
 
     @PostMapping
-    ProductDto createProduct(@RequestBody ProductCreateDto createDto) {
-        return productService.create(createDto)
+    ResponseEntity<ProductDto> createProduct(@RequestBody ProductCreateDto createDto) {
+        return productService.create(createDto).toResponse()
     }
 
     @PutMapping(path = "/{productId}")
-    Optional<ProductDto> updateProductById(@PathVariable UUID productId, @RequestBody ProductUpdateDto updateDto) {
-        return productService.updateById(productId, updateDto)
+    ResponseEntity<ProductDto> updateProductById(@PathVariable UUID productId, @RequestBody ProductUpdateDto updateDto) {
+        return productService.updateById(productId, updateDto).toResponse()
     }
     
     @DeleteMapping(path = "/{productId}")
-    Optional<ProductDto> deleteProductById(@PathVariable UUID productId) {
-        return productService.deleteById(productId)
+    ResponseEntity<ProductDto> deleteProductById(@PathVariable UUID productId) {
+        return productService.deleteById(productId).toResponse()
     }
 }

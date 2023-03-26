@@ -1,6 +1,7 @@
 package ru.berkytteam.shop.shopserver.controller
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import ru.berkytteam.shop.shopserver.model.dto.UserCreateDto
 import ru.berkytteam.shop.shopserver.model.dto.UserDto
@@ -15,22 +16,22 @@ class UserController {
     UserService userService
 
     @GetMapping(path = "/{userId}")
-    Optional<UserDto> getUserById(@PathVariable UUID userId) {
-        return userService.getById(userId)
+    ResponseEntity<UserDto> getUserById(@PathVariable UUID userId) {
+        return userService.getById(userId).toResponse()
     }
 
     @PostMapping
-    UserDto createUser(@RequestBody UserCreateDto createDto) {
-        return userService.create(createDto)
+    ResponseEntity<UserDto> createUser(@RequestBody UserCreateDto createDto) {
+        return userService.create(createDto).toResponse()
     }
 
     @PutMapping(path = "/{userId}")
-    Optional<UserDto> updateUserById(@PathVariable UUID userId, @RequestBody UserUpdateDto updateDto) {
-        return userService.updateById(userId, updateDto)
+    ResponseEntity<UserDto> updateUserById(@PathVariable UUID userId, @RequestBody UserUpdateDto updateDto) {
+        return userService.updateById(userId, updateDto).toResponse()
     }
     
     @DeleteMapping(path = "/{userId}")
-    Optional<UserDto> deleteUserById(@PathVariable UUID userId) {
-        return userService.deleteById(userId)
+    ResponseEntity<UserDto> deleteUserById(@PathVariable UUID userId) {
+        return userService.deleteById(userId).toResponse()
     }
 }
