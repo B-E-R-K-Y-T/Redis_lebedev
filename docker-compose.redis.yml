@@ -3,6 +3,8 @@ version: '3.8'
 services:
   redis-node-0:
     image: docker.io/bitnami/redis-cluster:7.0
+    container_name: redis-node-0
+    restart: always
     volumes:
       - redis-cluster_data-0:/bitnami/redis/data
     environment:
@@ -11,6 +13,8 @@ services:
 
   redis-node-1:
     image: docker.io/bitnami/redis-cluster:7.0
+    container_name: redis-node-1
+    restart: always
     volumes:
       - redis-cluster_data-1:/bitnami/redis/data
     environment:
@@ -19,6 +23,8 @@ services:
 
   redis-node-2:
     image: docker.io/bitnami/redis-cluster:7.0
+    container_name: redis-node-2
+    restart: always
     volumes:
       - redis-cluster_data-2:/bitnami/redis/data
     environment:
@@ -27,6 +33,8 @@ services:
 
   redis-node-3:
     image: docker.io/bitnami/redis-cluster:7.0
+    container_name: redis-node-3
+    restart: always
     volumes:
       - redis-cluster_data-3:/bitnami/redis/data
     environment:
@@ -35,6 +43,8 @@ services:
 
   redis-node-4:
     image: docker.io/bitnami/redis-cluster:7.0
+    container_name: redis-node-4
+    restart: always
     volumes:
       - redis-cluster_data-4:/bitnami/redis/data
     environment:
@@ -43,6 +53,8 @@ services:
 
   redis-node-5:
     image: docker.io/bitnami/redis-cluster:7.0
+    container_name: redis-node-5
+    restart: always
     volumes:
       - redis-cluster_data-5:/bitnami/redis/data
     depends_on:
