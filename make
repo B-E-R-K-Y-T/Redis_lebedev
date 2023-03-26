@@ -48,8 +48,15 @@ elif [[ "$1 $2" == "docker run" ]]; then
     docker-compose \
         -f docker-compose.redis.yml \
         -f docker-compose.service.yml \
-        up -d \
+        pull \
     || exit 1
+
+    docker-compose \
+        -f docker-compose.redis.yml \
+        -f docker-compose.service.yml \
+        up -d --remove-orphans \
+    || exit 1
+
     docker-compose \
         -f docker-compose.redis.yml \
         -f docker-compose.service.yml \
@@ -74,4 +81,6 @@ else
     printf "\t%s\t%s\n" "docker login" "Login to registry.gitlab.com"
     printf "\t%s\t%s\n" "docker build" "Build docker image"
     printf "\t%s\t%s\n" "docker push" "Push docker image"
+    printf "\t%s\t%s\n" "docker run" "Run docker-compose up"
+    printf "\t%s\t%s\n" "docker delete" "Run docker-compose down"
 fi
