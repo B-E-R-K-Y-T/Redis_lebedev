@@ -45,31 +45,31 @@ elif [[ "$1 $2" == "docker build" ]]; then
 elif [[ "$1 $2" == "docker push" ]]; then
     docker push "registry.gitlab.com/reconquista-lebed/shop-with-redis:${CI_DOCKER_TAG}" || exit 1
 elif [[ "$1 $2" == "docker run" ]]; then
-    docker-compose \
+    docker compose \
         -f docker-compose.redis.yml \
         -f docker-compose.service.yml \
         pull \
     || exit 1
 
-    docker-compose \
+    docker compose \
         -f docker-compose.redis.yml \
         -f docker-compose.service.yml \
         up -d --remove-orphans \
     || exit 1
 
-    docker-compose \
+    docker compose \
         -f docker-compose.redis.yml \
         -f docker-compose.service.yml \
         logs -f shop-with-redis \
     || exit 1
 elif [[ "$1 $2" == "docker restart" ]]; then
-    docker-compose \
+    docker compose \
         -f docker-compose.redis.yml \
         -f docker-compose.service.yml \
         restart $3 \
     || exit 1
 elif [[ "$1 $2" == "docker delete" ]]; then
-    docker-compose \
+    docker compose \
         -f docker-compose.redis.yml \
         -f docker-compose.service.yml \
         down -v \

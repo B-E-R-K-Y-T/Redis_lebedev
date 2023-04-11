@@ -1,0 +1,17 @@
+type,count
+TestProduct,57
+TestCreateUser,58
+TestCreateOrder,56
+TestCreateCart,59
+TestPutOrder,31
+TestPutUser,35
+TestPutProduct,36
+TestPutCart,28
+TestDeleteUser,29
+TestDeleteProduct,28
+TestDeleteOrder,28
+TestDeleteCrat,28
+TestGetUser,29
+TestGetProduct,30
+TestGetCart,29
+TestGetOrder,31
